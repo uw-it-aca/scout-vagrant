@@ -1,0 +1,34 @@
+---
+- hosts: all
+  vars:
+    settings_secret_key: "{{ lookup('password', playbook_dir + '/generated/secretkey chars=ascii_letters,digits,hexdigits,punctuation') }}"
+
+
+  tasks:
+
+    - include: tasks/initial.yml
+
+    - include: tasks/apt_system.yml
+
+    - include: tasks/apt_virtualenv.yml
+
+    #- include: tasks/npm_less.yml
+
+    - include: tasks/apt_git.yml
+
+    - include: tasks/app.yml
+
+    - include: tasks/create_proj.yml
+
+    - include: tasks/django_utils.yml
+
+    # NOT REUSABLE AT THIS TIME
+    #- include: tasks/precommit_hook.yml
+
+    - include: tasks/migrate_database.yml
+
+    - name: template screenrc into home...
+      template: src="templates/screenrc" dest="/home/vagrant/.screenrc"
+
+    - name: template vimrc into home...
+      template: src="templates/vimrc" dest="/home/vagrant/.vimrc"
