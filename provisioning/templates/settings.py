@@ -25,6 +25,11 @@ SECRET_KEY = '{{ settings_secret_key }}'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+INTERNAL_IPS = (
+    '127.0.0.1',
+    '0.0.0.0', #add your server's ip address!
+)
+
 ALLOWED_HOSTS = []
 
 
@@ -37,8 +42,9 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'compressor',
     'scout',
+    'turbolinks',
+    'compressor',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -50,6 +56,10 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'django_mobileesp.middleware.UserAgentDetectionMiddleware',
+    'turbolinks.middleware.TurbolinksMiddleware',
+    'htmlmin.middleware.HtmlMinifyMiddleware',
+    'htmlmin.middleware.MarkRequestMiddleware',
 )
 
 ROOT_URLCONF = 'scoutproject.urls'
@@ -65,6 +75,9 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'scout.context_processors.google_analytics',
+                'scout.context_processors.is_desktop',
+                'scout.context_processors.is_hybrid',
             ],
         },
     },
@@ -102,6 +115,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = '/tmp/'
 
 STATICFILES_FINDERS = (
     "django.contrib.staticfiles.finders.FileSystemFinder",
@@ -109,10 +123,43 @@ STATICFILES_FINDERS = (
     "compressor.finders.CompressorFinder",
 )
 
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
+
+# django mobileesp
+
+from django_mobileesp.detector import mobileesp_agent as agent
+
+DETECT_USER_AGENTS = {
+
+    'is_tablet' : agent.detectTierTablet,
+    'is_mobile': agent.detectMobileQuick,
+
+    'is_and': agent.detectAndroid,
+    'is_ios': agent.detectIos,
+    'is_win': agent.detectWindowsPhone,
+}
+
 COMPRESS_ROOT = "/tmp/some/path/for/files"
-COMPRESS_PRECOMPILERS = (('text/less', 'lessc {infile} {outfile}'),)
-COMPRESS_ENABLED = False
+COMPRESS_PRECOMPILERS = (
+    ('text/less', 'lessc {infile} {outfile}'),
+    ('text/x-sass', 'sassc {infile} {outfile}'),
+    ('text/x-scss', 'sassc {infile} {outfile}'),
+)
+COMPRESS_ENABLED = True
 COMPRESS_OFFLINE = False
+COMPRESS_OUTPUT_DIR = ''
 COMPRESS_CSS_FILTERS = [
+    'compressor.filters.css_default.CssAbsoluteFilter',
+    'compressor.filters.cssmin.CSSMinFilter'
+]
+COMPRESS_JS_FILTERS = [
     'compressor.filters.jsmin.JSMinFilter',
 ]
+
+# google analytics tracking
+#GOOGLE_ANALYTICS_KEY = "UA-XXXXXXXX-X"
+
+# htmlmin
+HTML_MINIFY = True
