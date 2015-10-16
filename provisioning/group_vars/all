@@ -1,3 +1,4 @@
 virtualenv_path: "/vagrant/venv"
 project_name: "scoutproject"
+app_name: '["scout"]'
 git_eggs: '["git+https://github.com/uw-it-aca/scout.git#egg=scout", "git+https://github.com/uw-it-aca/scout-manager.git#egg=scout_manager"]'
