@@ -22,6 +22,9 @@
 
     - include: tasks/django_utils.yml
 
+    - name: install requirements for scout...
+      pip: requirements=/vagrant/venv/src/scout/requirements.txt chdir=/vagrant/venv/src/scout virtualenv=/vagrant/venv
+
     # NOT REUSABLE AT THIS TIME
     #- include: tasks/precommit_hook.yml
 
