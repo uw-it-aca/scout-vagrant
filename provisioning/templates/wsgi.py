@@ -8,8 +8,13 @@ https://docs.djangoproject.com/en/1.8/howto/deployment/wsgi/
 """
 
 import os
+import site
+
+site.addsitedir('/vagrant/venv2/serverproject/lib/python2.6/site-packages')
+site.addsitedir('/vagrant/venv2/serverproject')
 
 from django.core.wsgi import get_wsgi_application
+application = get_wsgi.application()
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "scoutproject.settings")
 

@@ -2,15 +2,26 @@
 - hosts: all
   vars:
     settings_secret_key: "{{ lookup('password', playbook_dir + '/generated/secretkey chars=ascii_letters,digits,hexdigits,punctuation') }}"
+    site: "group_vars/{{ lookup('env', 'MY_VAR') }}"
+
+  vars_files:
+    - ['{{ site }}']
 
 
   tasks:
-
     - include: tasks/initial.yml
 
     - include: tasks/apt_system.yml
 
     - include: tasks/apt_virtualenv.yml
+
+    - name: Installing nodeenv for server...
+      pip: name=nodeenv virtualenv=/vagrant/venv2
+      when: not notinitial.stat.exists
+
+    - name: converting server virtualenv into nodeenv...
+      command: /vagrant/venv2/bin/nodeenv -p chdir=/vagrant/venv2/
+      when: not notinitial.stat.exists
 
     #- include: tasks/npm_less.yml
 
@@ -18,7 +29,20 @@
 
     - include: tasks/app.yml
 
+    - include: server-tasks/install_server.yml
+
     - include: tasks/create_proj.yml
+
+    - name: check if server project already exists...
+      stat: path=/vagrant/venv2/serverproject
+      register: server_created
+
+    - name: create server project...
+      command: /vagrant/venv2/bin/django-admin.py startproject serverproject chdir=/vagrant/venv2
+      when: not server_created.stat.exists
+
+    - name: install new version of django...
+      pip: name=django virtualenv=/vagrant/venv version=1.8
 
     - include: tasks/django_utils.yml
 
