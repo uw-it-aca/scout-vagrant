@@ -23,8 +23,6 @@
       command: /vagrant/venv2/bin/nodeenv -p chdir=/vagrant/venv2/
       when: not notinitial.stat.exists
 
-    #- include: tasks/npm_less.yml
-
     - include: tasks/apt_git.yml
 
     - include: tasks/app.yml
