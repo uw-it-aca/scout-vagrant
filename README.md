@@ -10,7 +10,7 @@ To get started:
 5. git submodule init
 6. git submodule update
 7. vagrant plugin install vagrant-host-shell
-8. vagrant up
+8. MY_VAR='scout' vagrant up
 
 To reload configuration changes: vagrant reload --provision
 
