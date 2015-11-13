@@ -1,3 +1,3 @@
 virtualenv_path: "/vagrant/venv"
 project_name: "scoutproject"
-git_eggs: '["git+https://github.com/uw-it-aca/scout.git#egg=scout", "git+https://github.com/uw-it-aca/scout-manager.git#egg=scout_manager"]'
+git_eggs: '["git+https://github.com/uw-it-aca/scout.git#egg=scout", "git+https://github.com/uw-it-aca/scout-manager.git#egg=scout_manager"]', "git+https://github.com/charlon/django-hybridize.git#egg=hybridize"]'

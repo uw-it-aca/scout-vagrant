@@ -44,6 +44,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'scout',
     'scout_manager',
+    'hybridize',
     'turbolinks',
     'compressor',
 )
