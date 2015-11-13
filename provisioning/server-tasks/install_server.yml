@@ -1,0 +1,33 @@
+- name: Installing spotseeker-server from github
+  git:
+      repo="git@github.com:uw-it-aca/spotseeker_server.git"
+      dest="/vagrant/venv2/serverproject/spotseeker_server"
+      accept_hostkey=yes
+
+- name: Copy over settings...
+  sudo: yes
+  template: src=templates/server_settings.py dest=/vagrant/venv2/serverproject/serverproject/settings.py
+
+# add task to add 'SS_WEB_SERVER_HOST' to point to http://localhost:8000
+
+- name: Copying over wsgi file...
+  sudo: yes
+  template: src=templates/sample.wsgi.py dest=/vagrant/venv2/serverproject/serverproject/wsgi.py
+
+- name: Copying over urls file...
+  sudo: yes
+  template: src=templates/server_urls.py dest=/vagrant/venv2/serverproject/serverproject/urls.py
+
+- name: Install server requirements...
+  pip: requirements=/vagrant/venv2/serverproject/spotseeker_server/requirements/{{ item }} virtualenv=/vagrant/venv2
+  with_items:
+      - "{{ server_requirements }}"
+
+- name: Syncing server database...
+  django_manage: command=syncdb app_path="/vagrant/venv2/serverproject/" virtualenv=/vagrant/venv2
+
+- name: Migrating server database...
+  django_manage: command=migrate app_path=/vagrant/venv2/serverproject/ virtualenv=/vagrant/venv2
+
+- name: Loading data into server database...
+  django_manage: command=loaddata app_path=/vagrant/venv2/serverproject/ virtualenv=/vagrant/venv2 fixtures="fixtures/uw.json"
