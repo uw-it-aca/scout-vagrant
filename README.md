@@ -1,13 +1,13 @@
 # scout-vagrant
 Vagrantfile and provisioning tasks for the scout project
 
-**To get started:**
+**Dependencies:**
 
     1. Install Vagrant: https://www.vagrantup.com/
     2. Install VirtualBox: https://www.virtualbox.org/wiki/Downloads
-    3. Install ansible: sudo pip install ansible
+    3. Install Ansible: $ sudo pip install ansible
     
-**Install**
+**Installation:**
 
     $ git clone https://github.com/uw-it-aca/scout-vagrant.git 
     $ cd scout-vagrant
