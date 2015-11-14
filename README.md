@@ -16,6 +16,10 @@ Vagrantfile and provisioning tasks for the scout project
     $ vagrant plugin install vagrant-host-shell
     $ MY_VAR='scout' vagrant up
 
+If you get the SSH error: 
+    
+    $ ssh-add
+    
 To reload configuration changes: 
     
     $ MY_VAR='scout' vagrant reload --provision
