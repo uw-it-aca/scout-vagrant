@@ -9,15 +9,21 @@ Vagrantfile and provisioning tasks for the scout project
     
 **Install**
 
-    4. Change directory into this repository
-    5. git submodule init
-    6. git submodule update
-    7. vagrant plugin install vagrant-host-shell
-    8. MY_VAR='scout' vagrant up
+    $ git clone https://github.com/uw-it-aca/scout-vagrant.git 
+    $ cd scout-vagrant
+    $ git submodule init
+    $ git submodule update
+    $ vagrant plugin install vagrant-host-shell
+    $ MY_VAR='scout' vagrant up
 
-To reload configuration changes: MY_VAR='scout' vagrant reload --provision
+To reload configuration changes: 
+    
+    $ MY_VAR='scout' vagrant reload --provision
 
-To start fresh: MY_VAR='scout' vagrant destroy, then MY_VAR='scout' vagrant up
+To start fresh: 
+    
+    $ vagrant destroy
+    $ MY_VAR='scout' vagrant up
 
 **Run your Django server (from Vagrant):**
     
