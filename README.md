@@ -12,6 +12,6 @@ To get started:
 7. vagrant plugin install vagrant-host-shell
 8. MY_VAR='scout' vagrant up
 
-To reload configuration changes: vagrant reload --provision
+To reload configuration changes: MY_VAR='scout'vagrant reload --provision
 
-To start fresh: vagrant destroy, then vagrant up
+To start fresh: MY_VAR='scout' vagrant destroy, then MY_VAR='scout' vagrant up
