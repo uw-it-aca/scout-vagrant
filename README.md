@@ -16,7 +16,7 @@ Vagrantfile and provisioning tasks for the scout project
     $ vagrant plugin install vagrant-host-shell
     $ MY_VAR='scout' vagrant up
     
-    go to.. Run your Django server
+**Troubleshooting**
 
 If you get the SSH error: 
     
