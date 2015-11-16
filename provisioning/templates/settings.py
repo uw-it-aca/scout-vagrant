@@ -143,7 +143,7 @@ DETECT_USER_AGENTS = {
     'is_win': agent.detectWindowsPhone,
 }
 
-COMPRESS_ROOT = "/tmp/some/path/for/files"
+COMPRESS_ROOT = "/tmp/"
 COMPRESS_PRECOMPILERS = (
     ('text/less', 'lessc {infile} {outfile}'),
     ('text/x-sass', 'sassc {infile} {outfile}'),
