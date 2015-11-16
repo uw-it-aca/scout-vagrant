@@ -29,8 +29,7 @@ To reload configuration changes:
 To start fresh: 
     
     $ vagrant destroy
-    $ rm -rf venv
-    $ rm -rf venv2
+    $ rm -rf venv*
     $ MY_VAR='scout' vagrant up
 
 **Run Scout webserver:**
