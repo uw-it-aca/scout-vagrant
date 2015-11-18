@@ -18,10 +18,6 @@ Vagrantfile and provisioning tasks for the scout project
     
 **Troubleshooting**
 
-If you get the SSH error: 
-    
-    $ ssh-add
-    
 To reload configuration changes: 
     
     $ MY_VAR='scout' vagrant reload --provision
