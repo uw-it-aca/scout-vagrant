@@ -11,7 +11,7 @@
 
 - name: Installing spotseeker-server from github...
   git:
-      repo="git@github.com:uw-it-aca/spotseeker_server.git"
+      repo="https://github.com/uw-it-aca/spotseeker_server.git"
       dest="/vagrant/venv2/serverproject/spotseeker_server"
       accept_hostkey=yes
 
