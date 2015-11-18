@@ -8,13 +8,13 @@
 
 # from http://www.phase2technology.com/blog/running-an-ssh-agent-with-vagrant/
 # Check to see if there's an SSH agent running with keys.
-`ssh-add -l`
+#`ssh-add -l`
 
-if not $?.success?
-  puts 'Your SSH does not currently contain any keys (or is stopped.)'
-  puts 'Please start it and add your SSH key to continue.'
-  exit 1
-end
+#if not $?.success?
+#  puts 'Your SSH does not currently contain any keys (or is stopped.)'
+#  puts 'Please start it and add your SSH key to continue.'
+#  exit 1
+#end
 
 #if Vagrant::VERSION &lt; "1.5.1"
 #  puts 'This Vagrant environment requires Vagrant 1.5.1 or higher.'

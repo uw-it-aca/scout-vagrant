@@ -1,8 +1,24 @@
-- name: Installing spotseeker-server from github
+- name: install django...
+  pip: name=django version=1.5 state=present virtualenv=/vagrant/venv2
+
+- name: check if server project already exists...
+  stat: path=/vagrant/venv2/serverproject/
+  register: server_created
+
+- name: create server project...
+  command: /vagrant/venv2/bin/django-admin.py startproject serverproject chdir=/vagrant/venv2/
+  when: not server_created.stat.exists
+
+- name: Installing spotseeker-server from github...
   git:
       repo="git@github.com:uw-it-aca/spotseeker_server.git"
       dest="/vagrant/venv2/serverproject/spotseeker_server"
       accept_hostkey=yes
+
+- name: Install server requirements...
+  pip: requirements=/vagrant/venv2/serverproject/spotseeker_server/requirements/{{ item }} virtualenv=/vagrant/venv2
+  with_items:
+      - "{{ server_requirements }}"
 
 - name: Copy over settings...
   sudo: yes
@@ -17,11 +33,6 @@
 - name: Copying over urls file...
   sudo: yes
   template: src=templates/server_urls.py dest=/vagrant/venv2/serverproject/serverproject/urls.py
-
-- name: Install server requirements...
-  pip: requirements=/vagrant/venv2/serverproject/spotseeker_server/requirements/{{ item }} virtualenv=/vagrant/venv2
-  with_items:
-      - "{{ server_requirements }}"
 
 - name: Syncing server database...
   django_manage: command=syncdb app_path="/vagrant/venv2/serverproject/" virtualenv=/vagrant/venv2
