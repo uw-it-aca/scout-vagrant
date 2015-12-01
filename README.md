@@ -41,7 +41,7 @@ To start fresh:
 In a new terminal...    
     
     $ vagrant ssh 
-    vagrant@vagrant $ cd /vagrant/venv2
+    vagrant@vagrant $ cd /vagrant/venv-server
     vagrant@vagrant $ source bin/activate
     (venv)vagrant@vagrant $ cd serverproject
     (venv)vagrant@vagrant $ python manage.py runserver 0:8001
