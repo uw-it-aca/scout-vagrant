@@ -1,0 +1,44 @@
+- name: install django...
+  pip: name=django version=1.5 state=present virtualenv=/vagrant/venv-server
+
+- name: check if server project already exists...
+  stat: path=/vagrant/venv-server/serverproject/
+  register: server_created
+
+- name: create server project...
+  command: /vagrant/venv-server/bin/django-admin.py startproject serverproject chdir=/vagrant/venv-server/
+  when: not server_created.stat.exists
+
+- name: Installing spotseeker-server from github...
+  git:
+      repo="https://github.com/uw-it-aca/spotseeker_server.git"
+      dest="/vagrant/venv-server/serverproject/spotseeker_server"
+      accept_hostkey=yes
+
+- name: Install server requirements...
+  pip: requirements=/vagrant/venv-server/serverproject/spotseeker_server/requirements/{{ item }} virtualenv=/vagrant/venv-server
+  with_items:
+      - "{{ server_requirements }}"
+
+- name: Copy over settings...
+  sudo: yes
+  template: src=templates/server_settings.py dest=/vagrant/venv-server/serverproject/serverproject/settings.py
+
+# add task to add 'SS_WEB_SERVER_HOST' to point to http://localhost:8000
+
+- name: Copying over wsgi file...
+  sudo: yes
+  template: src=templates/sample.wsgi.py dest=/vagrant/venv-server/serverproject/serverproject/wsgi.py
+
+- name: Copying over urls file...
+  sudo: yes
+  template: src=templates/server_urls.py dest=/vagrant/venv-server/serverproject/serverproject/urls.py
+
+- name: Syncing server database...
+  django_manage: command=syncdb app_path="/vagrant/venv-server/serverproject/" virtualenv=/vagrant/venv-server
+
+- name: Migrating server database...
+  django_manage: command=migrate app_path=/vagrant/venv-server/serverproject/ virtualenv=/vagrant/venv-server
+
+- name: Loading data into server database...
+  django_manage: command=loaddata app_path=/vagrant/venv-server/serverproject/ virtualenv=/vagrant/venv-server fixtures="fixtures/uw.json"

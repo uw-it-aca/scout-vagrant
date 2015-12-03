@@ -28,20 +28,23 @@ To start fresh:
     $ rm -rf venv*
     $ MY_VAR='scout' vagrant up
 
-**Run Scout webserver:**
-    
-    $ vagrant ssh 
-    vagrant@vagrant $ cd /vagrant/venv
-    vagrant@vagrant $ source bin/activate
-    (venv)vagrant@vagrant $ cd scoutproject
-    (venv)vagrant@vagrant $ python manage.py runserver 0:8000
-
 **Run Spotseeker Server:**
 
 In a new terminal...    
     
     $ vagrant ssh 
-    vagrant@vagrant $ cd /vagrant/venv2
+    vagrant@vagrant $ cd /vagrant/venv-server
     vagrant@vagrant $ source bin/activate
     (venv)vagrant@vagrant $ cd serverproject
+    (venv)vagrant@vagrant $ python manage.py runserver 0:8000
+**Run Scout webserver:**
+
+In a new terminal...  
+
+    $ vagrant ssh 
+    vagrant@vagrant $ cd /vagrant/venv
+    vagrant@vagrant $ source bin/activate
+    (venv)vagrant@vagrant $ cd scoutproject
     (venv)vagrant@vagrant $ python manage.py runserver 0:8001
+
+
