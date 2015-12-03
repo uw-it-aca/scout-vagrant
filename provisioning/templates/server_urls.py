@@ -14,9 +14,4 @@ urlpatterns = patterns('',
     url(r'^api/', include('spotseeker_server.urls')),
 )
 
-if settings.DEBUG:
-    urlpatterns += patterns('',
-        url(r'^media/(?P<path>.*)$', 'django.views.static.server', {
-            'document_root': settings.MEDIA_ROOT,
-        }),
-    )
+urlpatterns += staticfiles_urlpatterns()
