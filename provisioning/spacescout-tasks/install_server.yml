@@ -1,5 +1,5 @@
 - name: install django...
-  pip: name=django version=1.5 state=present virtualenv=/vagrant/venv-server
+  pip: name=django version=1.4 state=present virtualenv=/vagrant/venv-server
 
 - name: check if server project already exists...
   stat: path=/vagrant/venv-server/serverproject/
@@ -23,8 +23,6 @@
 - name: Copy over settings...
   sudo: yes
   template: src=templates/server_settings.py dest=/vagrant/venv-server/serverproject/serverproject/settings.py
-
-# add task to add 'SS_WEB_SERVER_HOST' to point to http://localhost:8000
 
 - name: Copying over wsgi file...
   sudo: yes

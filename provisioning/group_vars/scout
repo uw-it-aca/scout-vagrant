@@ -3,3 +3,4 @@ project_name: "scoutproject"
 server_key: "put-key-here"
 git_eggs: '["git+https://github.com/uw-it-aca/scout.git#egg=scout", "git+https://github.com/uw-it-aca/scout-manager.git#egg=scout_manager", "git+https://github.com/charlon/django-hybridize.git#egg=hybridize", "git+https://github.com/uw-it-aca/spotseeker_client.git#egg=spotseeker_client"]'
 server_requirements: '["requirements.txt"]'
+web_requirements: '["base-requirements.txt"]'

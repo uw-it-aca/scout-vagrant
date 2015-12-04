@@ -19,6 +19,8 @@
 
     - include: tasks/app.yml
 
+    - include: spacescout-tasks/install_web.yml
+
     - include: spacescout-tasks/install_server.yml
 
     - include: tasks/create_proj.yml

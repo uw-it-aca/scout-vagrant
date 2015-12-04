@@ -1,0 +1,54 @@
+- name: install django for spacecount_web...
+  pip: name=django version=1.4 state=present virtualenv=/vagrant/venv-web
+
+- name: check if spacescout_web project already exists...
+  stat: path=/vagrant/venv-web/webproject/
+  register: web_created
+
+- name: create spacescout_web project...
+  command: /vagrant/venv-web/bin/django-admin.py startproject webproject chdir=/vagrant/venv-web/
+  when: not web_created.stat.exists
+
+- name: Installing spacescout_web from github...
+  git:
+      repo="https://github.com/uw-it-aca/spacescout_web.git"
+      dest="/vagrant/venv-web/webproject/spacescout_web"
+      accept_hostkey=yes
+
+- name: Installing ldap2-dev package...
+  apt: pkg=libldap2-dev
+  sudo: yes
+
+- name: Installing libsasl2-dev package...
+  apt: pkg=libsasl2-dev
+  sudo: yes
+
+#TODO: If above worked:
+#- name: Installing libsasl2-dev package...
+#  apt: pkg={{ item }}
+#  sudo: yes
+#  with_items:
+#     - "{{ python_ldap_packages }}"
+
+#TODO: to be added to scout group vars
+#python_ldap_packages: '["libldap2-dev", "libsasl2-dev"]'
+
+- name: Install web requirements...
+  pip: requirements=/vagrant/venv-web/webproject/spacescout_web/{{ item }} virtualenv=/vagrant/venv-web
+  with_items:
+      - "{{ web_requirements }}"
+
+# - name: Copy over settings...
+#   sudo: yes
+#   template: src=templates/web_settings.py dest=/vagrant/venv-web/webproject/webproject/settings.py
+#
+# - name: Copying over wsgi file...
+#   sudo: yes
+#   template: src=templates/websample.wsgi.py dest=/vagrant/venv-web/webproject/webproject/wsgi.py
+#
+# - name: Copying over urls file...
+#   sudo: yes
+#   template: src=templates/web_urls.py dest=/vagrant/venv-web/webproject/webproject/urls.py
+
+# - name: Syncing server database...
+#   django_manage: command=syncdb app_path="/vagrant/venv-server/serverproject/" virtualenv=/vagrant/venv-server
