@@ -23,8 +23,8 @@
   apt: pkg=libsasl2-dev
   sudo: yes
 
-#TODO: If above worked:
-#- name: Installing libsasl2-dev package...
+# #TODO: If above worked:
+# - name: Installing libsasl2-dev package...
 #  apt: pkg={{ item }}
 #  sudo: yes
 #  with_items:
@@ -38,17 +38,17 @@
   with_items:
       - "{{ web_requirements }}"
 
-# - name: Copy over settings...
-#   sudo: yes
-#   template: src=templates/web_settings.py dest=/vagrant/venv-web/webproject/webproject/settings.py
-#
-# - name: Copying over wsgi file...
-#   sudo: yes
-#   template: src=templates/websample.wsgi.py dest=/vagrant/venv-web/webproject/webproject/wsgi.py
-#
-# - name: Copying over urls file...
-#   sudo: yes
-#   template: src=templates/web_urls.py dest=/vagrant/venv-web/webproject/webproject/urls.py
+- name: Copy over settings...
+  sudo: yes
+  template: src=templates/web_settings.py dest=/vagrant/venv-web/webproject/webproject/settings.py
+
+- name: Copying over wsgi file...
+  sudo: yes
+  template: src=templates/websample.wsgi.py dest=/vagrant/venv-web/webproject/webproject/wsgi.py
+
+- name: Copying over urls file...
+  sudo: yes
+  template: src=templates/web_urls.py dest=/vagrant/venv-web/webproject/webproject/urls.py
 
 # - name: Syncing server database...
 #   django_manage: command=syncdb app_path="/vagrant/venv-server/serverproject/" virtualenv=/vagrant/venv-server
