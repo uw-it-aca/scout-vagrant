@@ -50,5 +50,5 @@
   sudo: yes
   template: src=templates/web_urls.py dest=/vagrant/venv-web/webproject/webproject/urls.py
 
-# - name: Syncing server database...
-#   django_manage: command=syncdb app_path="/vagrant/venv-server/serverproject/" virtualenv=/vagrant/venv-server
+- name: Syncing server database...
+  django_manage: command=syncdb app_path="/vagrant/venv-web/webproject/" virtualenv=/vagrant/venv-web
