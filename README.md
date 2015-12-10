@@ -41,12 +41,13 @@ In a new terminal...
 **Run Spacescout Web Server:**
 
 In a new terminal...    
+
     $ vagrant ssh
     vagrant@vagrant $ cd /vagrant/venv-web
     vagrant@vagrant $ source bin/activate
     (venv)vagrant@vagrant $ cd webproject
     (venv)vagrant@vagrant $ python manage.py runserver 0:8001
-
+    
 **Run Scout webserver:**
 
 In a new terminal...  
