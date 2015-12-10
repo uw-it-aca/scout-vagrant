@@ -23,16 +23,6 @@
   apt: pkg=libsasl2-dev
   sudo: yes
 
-# #TODO: If above worked:
-# - name: Installing libsasl2-dev package...
-#  apt: pkg={{ item }}
-#  sudo: yes
-#  with_items:
-#     - "{{ python_ldap_packages }}"
-
-#TODO: to be added to scout group vars
-#python_ldap_packages: '["libldap2-dev", "libsasl2-dev"]'
-
 - name: Install web requirements...
   pip: requirements=/vagrant/venv-web/webproject/spacescout_web/{{ item }} virtualenv=/vagrant/venv-web
   with_items:
