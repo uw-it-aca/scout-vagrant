@@ -165,11 +165,9 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.cache.FetchFromCacheMiddleware',
 )
 
-ROOT_URLCONF = 'web_proj.urls'
+ROOT_URLCONF = 'webproject.urls'
 
-#TODO: Is the web_proj.wsgi correct ?
-# Python dotted path to the WSGI application used by Django's runserver.
-WSGI_APPLICATION = 'web_proj.wsgi.application'
+WSGI_APPLICATION = 'webproject.wsgi.application'
 
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
