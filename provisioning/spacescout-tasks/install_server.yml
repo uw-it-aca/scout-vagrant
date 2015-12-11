@@ -1,5 +1,5 @@
 - name: install django...
-  pip: name=django version=1.4 state=present virtualenv=/vagrant/venv-server
+  pip: name=django version=1.5 state=present virtualenv=/vagrant/venv-server
 
 - name: check if server project already exists...
   stat: path=/vagrant/venv-server/serverproject/
