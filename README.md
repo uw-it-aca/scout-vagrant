@@ -30,8 +30,6 @@ To start fresh:
 
 **Setup Spotseeker Server:**
 
-In a new terminal...    
-    
     $ vagrant ssh 
     vagrant@vagrant $ cd /vagrant/venv-server
     vagrant@vagrant $ source bin/activate
@@ -50,9 +48,16 @@ Create API consumer
 
     (venv)vagrant@vagrant $ python manage.py runserver 0:8000
 
-**Run Scout webserver:**
+**Serut Scout webserver:**
 
-In a new terminal...  
+Update settings.py
+    
+    SPOTSEEKER_HOST = "http://localhost:8000"
+    SPOTSEEKER_OAUTH_KEY = ""
+    SPOTSEEKER_OAUTH_SECRET = ""
+    SPOTSEEKER_DAO_CLASS = "spotseeker_restclient.dao_implementation.spotseeker.Live"
+
+Run Scout application 
 
     $ vagrant ssh 
     vagrant@vagrant $ cd /vagrant/venv
