@@ -44,11 +44,11 @@ Create API consumer
 
     (venv)vagrant@vagrant $ python manage.py create_consumer
 
-** Run Spotseeker Server:**    
+**Run Spotseeker Server:**    
 
     (venv)vagrant@vagrant $ python manage.py runserver 0:8000
 
-**Serut Scout webserver:**
+**Setup Scout webserver:**
 
 Update settings.py
     
