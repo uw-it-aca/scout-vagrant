@@ -1,0 +1,36 @@
+- name: installing django for labstats...
+  pip: name=django version=1.5 state=present virtualenv=/vagrant/venv-labstats
+
+- name: check if spacescout_labstats project already exists...
+  stat: path=/vagrant/venv-labstats/labstatsproject/
+  register: labstats_created
+
+- name: create spacescout_labstats project...
+  command: /vagrant/venv-labstats/bin/django-admin.py startproject labstatsproject chdir=/vagrant/venv-labstats/
+  when: not labstats_created.stat.exists
+
+- name: Installing spacescout_labstats from github...
+  git:
+      repo="https://github.com/uw-it-aca/spacescout_labstats.git"
+      dest="/vagrant/venv-labstats/labstatsproject/spacescout_labstats"
+      accept_hostkey=yes
+#
+# - name: Install labstats requirements...
+#   pip: requirements=/vagrant/venv-labstats/labstatsproject/spacescout_labstats/{{ item }} virtualenv=/vagrant/venv-labstats
+#   with_items:
+#       - "{{ labstats_requirements }}"
+#
+# - name: Copy over settings...
+#   sudo: yes
+#   template: src=templates/web_settings.py dest=/vagrant/venv-web/webproject/webproject/settings.py
+#
+# - name: Copying over wsgi file...
+#   sudo: yes
+#   template: src=templates/websample.wsgi.py dest=/vagrant/venv-web/webproject/webproject/wsgi.py
+#
+# - name: Copying over urls file...
+#   sudo: yes
+#   template: src=templates/web_urls.py dest=/vagrant/venv-web/webproject/webproject/urls.py
+#
+# - name: Syncing server database...
+#   django_manage: command=syncdb app_path="/vagrant/venv-web/webproject/" virtualenv=/vagrant/venv-web
