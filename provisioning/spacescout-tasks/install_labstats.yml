@@ -14,23 +14,23 @@
       repo="https://github.com/uw-it-aca/spacescout_labstats.git"
       dest="/vagrant/venv-labstats/labstatsproject/spacescout_labstats"
       accept_hostkey=yes
-#
-# - name: Install labstats requirements...
-#   pip: requirements=/vagrant/venv-labstats/labstatsproject/spacescout_labstats/{{ item }} virtualenv=/vagrant/venv-labstats
-#   with_items:
-#       - "{{ labstats_requirements }}"
-#
-# - name: Copy over settings...
-#   sudo: yes
-#   template: src=templates/web_settings.py dest=/vagrant/venv-web/webproject/webproject/settings.py
-#
+
+- name: Installing labstats requirements......
+  pip: requirements=/vagrant/venv-labstats/labstatsproject/spacescout_labstats/{{ item }} virtualenv=/vagrant/venv-labstats
+  with_items:
+      - "{{ labstats_requirements }}"
+
+- name: Copying over settings...
+  sudo: yes
+  template: src=templates/labstats_settings.py dest=/vagrant/venv-labstats/labstatsproject/labstatsproject/settings.py
+
 # - name: Copying over wsgi file...
 #   sudo: yes
-#   template: src=templates/websample.wsgi.py dest=/vagrant/venv-web/webproject/webproject/wsgi.py
+#   template: src=templates/labstats_sample.wsgi.py dest=/vagrant/venv-web/webproject/webproject/wsgi.py
 #
 # - name: Copying over urls file...
 #   sudo: yes
-#   template: src=templates/web_urls.py dest=/vagrant/venv-web/webproject/webproject/urls.py
+#   template: src=templates/labstats_urls.py dest=/vagrant/venv-labstats/labstatsproject/labstatsproject/urls.py
 #
-# - name: Syncing server database...
-#   django_manage: command=syncdb app_path="/vagrant/venv-web/webproject/" virtualenv=/vagrant/venv-web
+# - name: Syncing labstats database...
+#   django_manage: command=syncdb app_path="/vagrant/venv-labstats/labstatsproject/" virtualenv=/vagrant/venv-labstats
