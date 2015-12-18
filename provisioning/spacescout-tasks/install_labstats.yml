@@ -24,13 +24,9 @@
   sudo: yes
   template: src=templates/labstats_settings.py dest=/vagrant/venv-labstats/labstatsproject/labstatsproject/settings.py
 
-# - name: Copying over wsgi file...
-#   sudo: yes
-#   template: src=templates/labstats_sample.wsgi.py dest=/vagrant/venv-web/webproject/webproject/wsgi.py
-#
-# - name: Copying over urls file...
-#   sudo: yes
-#   template: src=templates/labstats_urls.py dest=/vagrant/venv-labstats/labstatsproject/labstatsproject/urls.py
-#
-# - name: Syncing labstats database...
-#   django_manage: command=syncdb app_path="/vagrant/venv-labstats/labstatsproject/" virtualenv=/vagrant/venv-labstats
+- name: Copying over urls file...
+  sudo: yes
+  template: src=templates/labstats_urls.py dest=/vagrant/venv-labstats/labstatsproject/labstatsproject/urls.py
+
+- name: Syncing labstats database...
+  django_manage: command=syncdb app_path="/vagrant/venv-labstats/labstatsproject/" virtualenv=/vagrant/venv-labstats
