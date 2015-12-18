@@ -17,6 +17,8 @@ LABSTATS_URL = ""
 
 # Values can be one of 'all_ok' or 'oauth'. If using 'oauth', client applications will need an oauth key/secret pair.
 SPOTSEEKER_AUTH_MODULE = 'spotseeker_server.auth.all_ok'
+#SPOTSEEKER_AUTH_MODULE = 'spotseeker_server.auth.oauth'
+SPOTSEEKER_AUTH_ADMINS = ()
 
 # Custom validation can be added by adding SpotForm and ExtendedInfoForm to org_forms and setting them here.
 SPOTSEEKER_SPOT_FORM = 'spotseeker_server.org_forms.uw_spot.UWSpotForm'
@@ -102,6 +104,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.auth.middleware.RemoteUserMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     #Uncomment the next line for simple clickjacking protection:
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',

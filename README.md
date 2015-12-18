@@ -28,14 +28,27 @@ To start fresh:
     $ rm -rf venv*
     $ MY_VAR='scout' vagrant up
 
-**Run Spotseeker Server:**
+**Setup Spotseeker Server:**
 
 In a new terminal...    
 
     $ vagrant ssh
+
     vagrant@vagrant $ cd /vagrant/venv-server
     vagrant@vagrant $ source bin/activate
     (venv)vagrant@vagrant $ cd serverproject
+
+Upload Craig's server.db to venv-server
+
+    (venv)vagrant@vagrant $ python manage.py syncdb
+    (venv)vagrant@vagrant $ python manage.py migrate
+
+Create API consumer
+
+    (venv)vagrant@vagrant $ python manage.py create_consumer
+
+**Run Spotseeker Server:**    
+
     (venv)vagrant@vagrant $ python manage.py runserver 0:8000
 
 **Run Spacescout Web Server:**
@@ -47,10 +60,19 @@ In a new terminal...
     vagrant@vagrant $ source bin/activate
     (venv)vagrant@vagrant $ cd webproject
     (venv)vagrant@vagrant $ python manage.py runserver 0:8001
-    
+
 **Run Scout webserver:**
 
-In a new terminal...  
+**Setup Scout webserver:**
+
+Update settings.py
+
+    SPOTSEEKER_HOST = "http://localhost:8000"
+    SPOTSEEKER_OAUTH_KEY = ""
+    SPOTSEEKER_OAUTH_SECRET = ""
+    SPOTSEEKER_DAO_CLASS = "spotseeker_restclient.dao_implementation.spotseeker.Live"
+
+Run Scout application
 
     $ vagrant ssh
     vagrant@vagrant $ cd /vagrant/venv
