@@ -147,8 +147,8 @@ DETECT_USER_AGENTS = {
 COMPRESS_ROOT = "/tmp/"
 COMPRESS_PRECOMPILERS = (
     ('text/less', 'lessc {infile} {outfile}'),
-    ('text/x-sass', 'sassc {infile} {outfile}'),
-    ('text/x-scss', 'sassc {infile} {outfile}'),
+    ('text/x-sass', 'pyscss {infile} > {outfile}'),
+    ('text/x-scss', 'pyscss {infile} > {outfile}'),
 )
 COMPRESS_ENABLED = True
 COMPRESS_OFFLINE = False
