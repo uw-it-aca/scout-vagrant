@@ -64,4 +64,8 @@ venv
 venv2
 
 # Random generated passwords and strings
-provisionsing/generated/
+provisioning/generated/
+venv-labstats/
+venv-server/
+venv-web/
+
