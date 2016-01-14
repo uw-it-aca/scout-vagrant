@@ -14,6 +14,7 @@
       repo="https://github.com/uw-it-aca/spacescout_labstats.git"
       dest="/vagrant/venv-labstats/labstatsproject/spacescout_labstats"
       accept_hostkey=yes
+  ignore_errors: yes
 
 - name: Installing labstats requirements......
   pip: requirements=/vagrant/venv-labstats/labstatsproject/spacescout_labstats/{{ item }} virtualenv=/vagrant/venv-labstats

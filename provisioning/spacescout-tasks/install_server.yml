@@ -14,6 +14,7 @@
       repo="https://github.com/uw-it-aca/spotseeker_server.git"
       dest="/vagrant/venv-server/serverproject/spotseeker_server"
       accept_hostkey=yes
+  ignore_errors: yes
 
 - name: Install server requirements...
   pip: requirements=/vagrant/venv-server/serverproject/spotseeker_server/requirements/{{ item }} virtualenv=/vagrant/venv-server
