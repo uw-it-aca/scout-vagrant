@@ -166,3 +166,8 @@ COMPRESS_JS_FILTERS = [
 
 # htmlmin
 HTML_MINIFY = True
+
+SPOTSEEKER_HOST = ""
+SPOTSEEKER_OAUTH_KEY = ""
+SPOTSEEKER_OAUTH_SECRET = ""
+#SPOTSEEKER_DAO_CLASS = "spotseeker_restclient.dao_implementation.spotseeker.Live"
