@@ -18,7 +18,7 @@ from django.contrib import admin
 from scout import urls as scout_urls
 
 urlpatterns = [
-    url(r'^', include(scout_urls)),
     url(r'^manager/', include('scout_manager.urls')),
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^', include(scout_urls)),
 ]
