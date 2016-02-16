@@ -25,6 +25,8 @@
 
     - include: spacescout-tasks/install_labstats.yml
 
+    - include: spacescout-tasks/install_admin.yml
+
     - include: tasks/create_proj.yml
 
     - name: install new version of django...

@@ -1,0 +1,28 @@
+- name: installing django...
+  pip: name=django version=1.5 state=present virtualenv=/vagrant/venv-admin
+
+- name: check if spacescout_admin project already exists...
+  stat: path=/vagrant/venv-admin/adminproject/
+  register: admin_created
+
+- name: create spacescout_admin project...
+  command: /vagrant/venv-admin/bin/django-admin.py startproject adminproject chdir=/vagrant/venv-admin/
+  when: not admin_created.stat.exists
+
+- name: Install admin
+  pip: name='git+http://github.com/uw-it-aca/spacescout_admin@setuptools-compat#egg=spacescout_admin' virtualenv=/vagrant/venv-admin
+
+- name: Copy over settings...
+  sudo: yes
+  template: src=templates/admin_settings.py dest=/vagrant/venv-admin/adminproject/adminproject/settings.py
+
+- name: Copying over wsgi file...
+  sudo: yes
+  template: src=templates/adminsample.wsgi.py dest=/vagrant/venv-admin/adminproject/adminproject/wsgi.py
+
+- name: Copying over urls file...
+  sudo: yes
+  template: src=templates/admin_urls.py dest=/vagrant/venv-admin/adminproject/adminproject/urls.py
+
+- name: Syncing server database...
+  django_manage: command=syncdb app_path="/vagrant/venv-admin/adminproject/" virtualenv=/vagrant/venv-admin
