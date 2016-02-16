@@ -9,12 +9,12 @@
   command: /vagrant/venv-web/bin/django-admin.py startproject webproject chdir=/vagrant/venv-web/
   when: not web_created.stat.exists
 
-- name: Installing spacescout_web from github...
-  git:
-      repo="https://github.com/uw-it-aca/spacescout_web.git"
-      dest="/vagrant/venv-web/webproject/spacescout_web"
-      accept_hostkey=yes
-  ignore_errors: yes
+#- name: Installing spacescout_web from github...
+#  git:
+#      repo="https://github.com/uw-it-aca/spacescout_web.git"
+#      dest="/vagrant/venv-web/webproject/spacescout_web"
+#      accept_hostkey=yes
+#  ignore_errors: yes
 
 - name: Installing ldap2-dev package...
   apt: pkg=libldap2-dev
@@ -24,10 +24,13 @@
   apt: pkg=libsasl2-dev
   sudo: yes
 
-- name: Install web requirements...
-  pip: requirements=/vagrant/venv-web/webproject/spacescout_web/{{ item }} virtualenv=/vagrant/venv-web
-  with_items:
-      - "{{ web_requirements }}"
+- name: Install web
+  pip: name='git+http://github.com/uw-it-aca/spacescout_web@setuptools-compat#egg=spacescout_web' virtualenv=/vagrant/venv-web
+
+#- name: Install web requirements...
+#  pip: requirements=/vagrant/venv-web/webproject/spacescout_web/{{ item }} virtualenv=/vagrant/venv-web
+#  with_items:
+#      - "{{ web_requirements }}"
 
 - name: Copy over settings...
   sudo: yes
