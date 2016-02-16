@@ -9,17 +9,20 @@
   command: /vagrant/venv-labstats/bin/django-admin.py startproject labstatsproject chdir=/vagrant/venv-labstats/
   when: not labstats_created.stat.exists
 
-- name: Installing spacescout_labstats from github...
-  git:
-      repo="https://github.com/uw-it-aca/spacescout_labstats.git"
-      dest="/vagrant/venv-labstats/labstatsproject/spacescout_labstats"
-      accept_hostkey=yes
-  ignore_errors: yes
+#- name: Installing spacescout_labstats from github...
+#  git:
+#      repo="https://github.com/uw-it-aca/spacescout_labstats.git"
+#      dest="/vagrant/venv-labstats/labstatsproject/spacescout_labstats"
+#      accept_hostkey=yes
+#  ignore_errors: yes
 
-- name: Installing labstats requirements......
-  pip: requirements=/vagrant/venv-labstats/labstatsproject/spacescout_labstats/{{ item }} virtualenv=/vagrant/venv-labstats
-  with_items:
-      - "{{ labstats_requirements }}"
+#- name: Installing labstats requirements......
+#  pip: requirements=/vagrant/venv-labstats/labstatsproject/spacescout_labstats/{{ item }} virtualenv=/vagrant/venv-labstats
+#  with_items:
+#      - "{{ labstats_requirements }}"
+
+- name: Install spacescout_labstats
+  pip: name='git+http://github.com/uw-it-aca/spacescout_labstats@setuptools-compat#egg=spacescout_labstats' virtualenv=/vagrant/venv-labstats
 
 - name: Copying over settings...
   sudo: yes
