@@ -14,7 +14,11 @@ Vagrantfile and provisioning tasks for the scout project
     $ git submodule init
     $ git submodule update
     $ vagrant plugin install vagrant-host-shell
-    $ MY_VAR='scout' vagrant up
+    $ vagrant up
+
+If you want to skip installation of one of the components, you can use the following environment variables - SKIP_APP, SKIP_WEB, SKIP_SERVER, SKIP_LABSTATS, SKIP_ADMIN. For example if you just wanted scout and spotseeker_server, you could use:
+
+    $ SKIP_WEB=True SKIP_LABSTATS=True SKIP_ADMIN=True vagrant up
 
 **Troubleshooting**
 
@@ -26,7 +30,7 @@ To start fresh:
 
     $ vagrant destroy
     $ rm -rf venv*
-    $ MY_VAR='scout' vagrant up
+    $ vagrant up
 
 **Setup Spotseeker Server:**
 

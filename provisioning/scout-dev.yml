@@ -3,6 +3,11 @@
   vars:
     settings_secret_key: "{{ lookup('password', playbook_dir + '/generated/secretkey chars=ascii_letters,digits,hexdigits,punctuation') }}"
     site: "group_vars/scout"
+    skip_app: "{{ lookup('env', 'SKIP_APP')|default(False) }}"
+    skip_server: "{{ lookup('env', 'SKIP_SERVER')|default(False) }}"
+    skip_web: "{{ lookup('env', 'SKIP_WEB')|default(False) }}"
+    skip_labstats: "{{ lookup('env', 'SKIP_LABSTATS')|default(False) }}"
+    skip_admin: "{{ lookup('env', 'SKIP_ADMIN')|default(False) }}"
 
   vars_files:
     - ['{{ site }}']
@@ -18,19 +23,24 @@
     - include: tasks/apt_git.yml
 
     - include: tasks/app.yml
+      when: not skip_app
 
     - include: spacescout-tasks/install_server.yml
+      when: not skip_server
 
     - include: spacescout-tasks/install_web.yml
+      when: not skip_web
 
     - include: spacescout-tasks/install_labstats.yml
+      when: not skip_labstats
 
     - include: spacescout-tasks/install_admin.yml
+      when: not skip_admin
 
     - include: tasks/create_proj.yml
 
-    - name: install new version of django...
-      pip: name=django virtualenv=/vagrant/venv version=1.8
+    #- name: install new version of django...
+    #  pip: name=django virtualenv=/vagrant/venv version=1.8
 
     - include: tasks/django_utils.yml
 
