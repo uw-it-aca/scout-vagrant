@@ -9,17 +9,21 @@
   command: /vagrant/venv-server/bin/django-admin.py startproject serverproject chdir=/vagrant/venv-server/
   when: not server_created.stat.exists
 
-- name: Installing spotseeker-server from github...
-  git:
-      repo="https://github.com/uw-it-aca/spotseeker_server.git"
-      dest="/vagrant/venv-server/serverproject/spotseeker_server"
-      accept_hostkey=yes
-  ignore_errors: yes
+#- name: Installing spotseeker-server from github...
+#  git:
+#      repo="https://github.com/uw-it-aca/spotseeker_server.git"
+#      version="setuptools-compat"
+#      dest="/vagrant/venv-server/serverproject/spotseeker_server"
+#      accept_hostkey=yes
+#  ignore_errors: yes
 
-- name: Install server requirements...
-  pip: requirements=/vagrant/venv-server/serverproject/spotseeker_server/requirements/{{ item }} virtualenv=/vagrant/venv-server
-  with_items:
-      - "{{ server_requirements }}"
+- name: Install server
+  pip: name='git+http://github.com/uw-it-aca/spotseeker_server@setuptools-compat#egg=spotseeker_server' virtualenv=/vagrant/venv-server
+
+#- name: Install server requirements...
+#  pip: requirements=/vagrant/venv-server/serverproject/spotseeker_server/requirements/{{ item }} virtualenv=/vagrant/venv-server
+#  with_items:
+#      - "{{ server_requirements }}"
 
 - name: Copy over settings...
   sudo: yes
