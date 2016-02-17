@@ -22,7 +22,7 @@
 #      - "{{ labstats_requirements }}"
 
 - name: Install spacescout_labstats
-  pip: name='git+http://github.com/uw-it-aca/spacescout_labstats@setuptools-compat#egg=spacescout_labstats' virtualenv=/vagrant/venv-labstats
+  pip: name='git+http://github.com/uw-it-aca/spacescout_labstats@develop#egg=spacescout_labstats' virtualenv=/vagrant/venv-labstats
 
 - name: Copying over settings...
   sudo: yes

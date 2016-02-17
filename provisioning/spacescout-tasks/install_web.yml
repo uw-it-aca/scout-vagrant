@@ -25,7 +25,7 @@
   sudo: yes
 
 - name: Install web
-  pip: name='git+http://github.com/uw-it-aca/spacescout_web@setuptools-compat#egg=spacescout_web' virtualenv=/vagrant/venv-web
+  pip: name='git+http://github.com/uw-it-aca/spacescout_web@develop#egg=spacescout_web' virtualenv=/vagrant/venv-web
 
 #- name: Install web requirements...
 #  pip: requirements=/vagrant/venv-web/webproject/spacescout_web/{{ item }} virtualenv=/vagrant/venv-web

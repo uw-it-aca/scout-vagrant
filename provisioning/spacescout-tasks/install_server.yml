@@ -18,7 +18,7 @@
 #  ignore_errors: yes
 
 - name: Install server
-  pip: name='git+http://github.com/uw-it-aca/spotseeker_server@setuptools-compat#egg=spotseeker_server' virtualenv=/vagrant/venv-server
+  pip: name='git+http://github.com/uw-it-aca/spotseeker_server@develop#egg=spotseeker_server' virtualenv=/vagrant/venv-server
 
 #- name: Install server requirements...
 #  pip: requirements=/vagrant/venv-server/serverproject/spotseeker_server/requirements/{{ item }} virtualenv=/vagrant/venv-server

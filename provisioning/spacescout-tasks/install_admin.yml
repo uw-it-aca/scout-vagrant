@@ -10,7 +10,7 @@
   when: not admin_created.stat.exists
 
 - name: Install admin
-  pip: name='git+http://github.com/uw-it-aca/spacescout_admin@setuptools-compat#egg=spacescout_admin' virtualenv=/vagrant/venv-admin
+  pip: name='git+http://github.com/uw-it-aca/spacescout_admin@develop#egg=spacescout_admin' virtualenv=/vagrant/venv-admin
 
 - name: Copy over settings...
   sudo: yes
