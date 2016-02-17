@@ -171,3 +171,6 @@ SPOTSEEKER_HOST = ""
 SPOTSEEKER_OAUTH_KEY = ""
 SPOTSEEKER_OAUTH_SECRET = ""
 #SPOTSEEKER_DAO_CLASS = "spotseeker_restclient.dao_implementation.spotseeker.Live"
+
+#SAUCE_USERNAME = ''
+#SAUCE_ACCESS_KEY = ''

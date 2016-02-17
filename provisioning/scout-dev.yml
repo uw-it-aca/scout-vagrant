@@ -20,6 +20,21 @@
 
     - include: tasks/apt_virtualenv.yml
 
+    - get_url:
+        url=https://saucelabs.com/downloads/sc-4.3.13-linux.tar.gz
+        sha256sum=7ce794eb99787554cc6be6763110a6ed343b62133331b83d5f6ef3b3b4d690ba
+        dest=/home/vagrant/sc-4.3.13-linux.tar.gz
+
+    - unarchive:
+        src=/home/vagrant/sc-4.3.13-linux.tar.gz
+        dest=/home/vagrant
+        copy=no
+
+    - command: cp /home/vagrant/sc-4.3.13-linux/bin/sc /vagrant/venv/bin/sc
+    - command: cp /home/vagrant/sc-4.3.13-linux/include/sauceconnect.h /vagrant/venv/include/sauceconnect.h
+    - command: cp /home/vagrant/sc-4.3.13-linux/lib/libsauceconnect.a /vagrant/venv/lib/libsauceconnect.a
+    - command: cp /home/vagrant/sc-4.3.13-linux/lib/libsauceconnect.la /vagrant/venv/lib/libsauceconnect.la
+
     - include: tasks/apt_git.yml
 
     - include: tasks/app.yml
