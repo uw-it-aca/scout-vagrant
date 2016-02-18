@@ -83,3 +83,25 @@ Run Scout application
     vagrant@vagrant $ source bin/activate
     (venv)vagrant@vagrant $ cd scoutproject
     (venv)vagrant@vagrant $ python manage.py runserver 0:8001
+
+**Selenium Testing with SauceLabs**
+
+Update settings.py (get from Craig or Char)
+    
+    SAUCE_USERNAME = ""
+    SAUCE_ACCESS_KEY = ""
+
+Open a Sauce Connect Tunnel
+    
+    $ vagrant ssh
+    vagrant@vagrant $ cd /vagrant/venv
+    vagrant@vagrant $ source bin/activate
+    (venv)vagrant@vagrant $ sc -u USERNAME -k ACCESS_KEY
+
+Run your fucntional test (new terminal)
+    
+    $ vagrant ssh
+    vagrant@vagrant $ cd /vagrant/venv
+    vagrant@vagrant $ source bin/activate
+    (venv)vagrant@vagrant $ cd scoutproject
+    (venv)vagrant@vagrant $ python manage.py test scout.tests.PageFlowTest
