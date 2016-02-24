@@ -113,3 +113,8 @@ Run your fucntional test (new terminal)
     vagrant@vagrant $ source bin/activate
     (venv)vagrant@vagrant $ cd scoutproject
     (venv)vagrant@vagrant $ python manage.py test scout.tests.PageFlowTest
+
+View your test results
+    
+    https://saucelabs.com/u/uw-it-aca-scout
+
