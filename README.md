@@ -91,7 +91,7 @@ Install dependencies
     $ vagrant ssh
     vagrant@vagrant $ cd /vagrant/venv
     vagrant@vagrant $ source bin/activate
-    (venv)vagrant@vagrant $ cd scoutproject
+    (venv)vagrant@vagrant $ cd src/scout
     (venv)vagrant@vagrant $ pip install -r requirements_saucelabs.txt
     
 Update settings.py (get from Craig or Char)
