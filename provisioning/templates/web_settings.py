@@ -13,6 +13,9 @@ FEEDBACK_EMAIL_RECIPIENT = ['']  # The email addresses that the report a problem
 DEFAULT_FROM_EMAIL = 'noreply@example.com'  # If the user doesn't specify an email address when they report a problem
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
+# Custom filter for the web app
+SPACESCOUT_SEARCH_FILTERS = ['spacescout_web.org_filters.uw_search.Filter']
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',  # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
