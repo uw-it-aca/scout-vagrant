@@ -81,6 +81,7 @@ TEMPLATES = [
                 'scout.context_processors.google_analytics',
                 'scout.context_processors.is_desktop',
                 'scout.context_processors.is_hybrid',
+                'scout_manager.context_processors.is_branded',
             ],
         },
     },
@@ -161,16 +162,21 @@ COMPRESS_JS_FILTERS = [
     'compressor.filters.jsmin.JSMinFilter',
 ]
 
-# google analytics tracking
+# google analytics
 #GOOGLE_ANALYTICS_KEY = "UA-XXXXXXXX-X"
 
 # htmlmin
 HTML_MINIFY = True
 
+# spotseeker-test api
 SPOTSEEKER_HOST = ""
 SPOTSEEKER_OAUTH_KEY = ""
 SPOTSEEKER_OAUTH_SECRET = ""
 #SPOTSEEKER_DAO_CLASS = "spotseeker_restclient.dao_implementation.spotseeker.Live"
 
+# saucelabs
 #SAUCE_USERNAME = ''
 #SAUCE_ACCESS_KEY = ''
+
+# scout manager
+#SCOUT_MGR_BRANDING = True
