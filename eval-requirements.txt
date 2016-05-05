@@ -1,3 +1,3 @@
--e git+https://github.com/uw-it-aca/scout@story/food#egg=scout
+-e git+https://github.com/uw-it-aca/scout@develop#egg=scout
 -e git+https://github.com/uw-it-aca/spotseeker_client@master#egg=spotseeker_restclient
 -e git+https://github.com/charlon/django-hybridize@master#egg=hybridize
