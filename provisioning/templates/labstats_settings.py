@@ -144,6 +144,11 @@ LOGGING = {
      'level': 'WARNING',
      'class': 'logging.StreamHandler',
      },
+     'file': {
+     'level': 'DEBUG',
+     'class': 'logging.FileHandler',
+     'filename': '/home/vagrant/labstats_daemon.log',
+     }
  },
  'loggers': {
      'django.request': {
@@ -152,8 +157,8 @@ LOGGING = {
      'propagate': True,
  },
  '': {
-     'handlers': ['console'],
-     'level': 'WARNING',
+     'handlers': ['console', 'file'],
+     'level': 'DEBUG',
      'propagate': True,
  },
  }
