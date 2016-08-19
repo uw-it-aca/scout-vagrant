@@ -149,13 +149,11 @@ LOGGING = {
             'class': 'logging.FileHandler',
             'filename': '/home/vagrant/labstats_daemon.log',
         },
+        'null': {
+            'class': 'logging.NullHandler',
+        },
     },
     'loggers': {
-        'django.request': {
-            'handlers': ['mail_admins'],
-            'level': 'ERROR',
-            'propagate': True,
-        },
         '': {
             'handlers': ['console', 'file'],
             'level': 'DEBUG',
