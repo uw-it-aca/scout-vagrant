@@ -152,18 +152,26 @@ INSTALLED_APPS = (
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+        'null': {
+            'class': 'logging.NullHandler',
+        },
+    },
     'filters': {
         'require_debug_false': {
             '()': 'django.utils.log.RequireDebugFalse'
-        }
+        },
     },
-    # 'loggers': {
-    #     'django.request': {
-    #         'handlers': ['mail_admin'],
-    #         'level': 'ERROR',
-    #         'propagate': True,
-    #     },
-    # }
+    'loggers': {
+        '': {
+            'handlers': ['console'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+    },
 }
 
 # Preferred web app hostname
