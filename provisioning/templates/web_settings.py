@@ -203,6 +203,11 @@ INSTALLED_APPS = (
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
+    'formatters': {
+        'standard': {
+            'format': '[%(asctime)s] [%(levelname)s] [%(module)s] %(message)s'
+        },
+    },
     'handlers': {
         'mail_admins': {
             'level': 'ERROR',
@@ -212,6 +217,7 @@ LOGGING = {
         'console': {
             'level': 'INFO',
             'class': 'logging.StreamHandler',
+            'formatter': 'standard',
         },
         'file': {
             'level': 'WARNING',
