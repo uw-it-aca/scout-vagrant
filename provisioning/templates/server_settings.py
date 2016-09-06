@@ -8,6 +8,8 @@ OAUTH_AUTHORIZE_VIEW = 'spotseeker_server.views.oauth.authorize'
 OAUTH_CALLBACK_VIEW = 'spotseeker_server.views.oauth.callback'
 
 ADMINS = (
+    "labstats_daemon",
+    "scout_manager",
     # ('Your Name', 'your_email@example.com'),
 )
 
