@@ -218,6 +218,9 @@ SPOTSEEKER_OAUTH_SECRET = ""
 SPOTSEEKER_OAUTH_USER = "scout_manager"
 #SPOTSEEKER_DAO_CLASS = "spotseeker_restclient.dao_implementation.spotseeker.Live"
 
+
+CAMPUS_URL_LIST = ['seattle', 'bothell', 'tacoma']
+
 # saucelabs
 #SAUCE_USERNAME = ''
 #SAUCE_ACCESS_KEY = ''
