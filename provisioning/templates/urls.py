@@ -22,3 +22,5 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^', include(scout_urls)),
 ]
+
+handler404 = 'scout.views.custom_404_response'
