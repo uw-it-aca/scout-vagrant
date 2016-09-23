@@ -8,8 +8,6 @@ OAUTH_AUTHORIZE_VIEW = 'spotseeker_server.views.oauth.authorize'
 OAUTH_CALLBACK_VIEW = 'spotseeker_server.views.oauth.callback'
 
 ADMINS = (
-    "labstats_daemon",
-    "scout_manager",
     # ('Your Name', 'your_email@example.com'),
 )
 
@@ -20,7 +18,10 @@ LABSTATS_URL = ""
 # Values can be one of 'all_ok' or 'oauth'. If using 'oauth', client applications will need an oauth key/secret pair.
 SPOTSEEKER_AUTH_MODULE = 'spotseeker_server.auth.all_ok'
 #SPOTSEEKER_AUTH_MODULE = 'spotseeker_server.auth.oauth'
-SPOTSEEKER_AUTH_ADMINS = ()
+SPOTSEEKER_AUTH_ADMINS = (
+    "labstats_daemon",
+    "scout_manager",
+)
 
 # Custom validation can be added by adding SpotForm and ExtendedInfoForm to org_forms and setting them here.
 SPOTSEEKER_SPOT_FORM = 'spotseeker_server.org_forms.uw_spot.UWSpotForm'
