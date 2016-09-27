@@ -174,7 +174,7 @@ LOGGING = {
         'file': {
             'level': 'WARNING',
             'class': 'logging.FileHandler',
-            'filename': '/home/vagrant/spacescout_server.log',
+            'filename': '/home/ubuntu/spacescout_server.log',
         },
         'null': {
             'class': 'logging.NullHandler',

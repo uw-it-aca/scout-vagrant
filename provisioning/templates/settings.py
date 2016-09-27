@@ -153,7 +153,7 @@ LOGGING = {
         'file': {
             'level': 'WARNING',
             'class': 'logging.FileHandler',
-            'filename': '/home/vagrant/scout.log',
+            'filename': '/home/ubuntu/scout.log',
         },
         'null': {
             'class': 'logging.NullHandler',
