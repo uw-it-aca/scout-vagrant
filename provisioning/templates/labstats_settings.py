@@ -152,7 +152,7 @@ LOGGING = {
         'file': {
             'level': 'DEBUG',
             'class': 'logging.FileHandler',
-            'filename': '/home/ubuntu/labstats_daemon.log',
+            'filename': '/home/vagrant/labstats_daemon.log',
             'formatter': 'standard',
         },
         'null': {
