@@ -46,8 +46,11 @@ INSTALLED_APPS = (
     'scout_manager',
     'hybridize',
     'turbolinks',
+    'restclients',
     'spotseeker_restclient',
-    'compressor'
+    'compressor',
+    'userservice',
+    'supporttools',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -55,6 +58,8 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.auth.middleware.RemoteUserMiddleware',
+    'userservice.user.UserServiceMiddleware',
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -63,6 +68,10 @@ MIDDLEWARE_CLASSES = (
     'turbolinks.middleware.TurbolinksMiddleware',
     'htmlmin.middleware.HtmlMinifyMiddleware',
     'htmlmin.middleware.MarkRequestMiddleware',
+)
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.RemoteUserBackend',
 )
 
 ROOT_URLCONF = 'scoutproject.urls'
@@ -212,7 +221,7 @@ COMPRESS_JS_FILTERS = [
 HTML_MINIFY = True
 
 # spotseeker-test api
-SPOTSEEKER_HOST = ""
+SPOTSEEKER_HOST = "http://localhost:8000"
 SPOTSEEKER_OAUTH_KEY = ""
 SPOTSEEKER_OAUTH_SECRET = ""
 SPOTSEEKER_OAUTH_USER = "scout_manager"
