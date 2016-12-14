@@ -224,8 +224,8 @@ HTML_MINIFY = True
 SPOTSEEKER_HOST = "http://localhost:8000"
 SPOTSEEKER_OAUTH_KEY = ""
 SPOTSEEKER_OAUTH_SECRET = ""
-SPOTSEEKER_OAUTH_USER = "scout_manager"
 #SPOTSEEKER_DAO_CLASS = "spotseeker_restclient.dao_implementation.spotseeker.Live"
+OAUTH_USER = "scout_manager"
 
 
 CAMPUS_URL_LIST = ['seattle', 'bothell', 'tacoma']
@@ -236,3 +236,5 @@ CAMPUS_URL_LIST = ['seattle', 'bothell', 'tacoma']
 
 # scout manager
 #SCOUT_MGR_BRANDING = True
+
+MANAGER_SUPERUSER_GROUP = 'u_acadev_tester'
