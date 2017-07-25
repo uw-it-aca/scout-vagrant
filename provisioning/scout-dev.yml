@@ -21,7 +21,7 @@
     - include: tasks/apt_virtualenv.yml
 
     - get_url:
-        url=https://saucelabs.com/downloads/sc-4.3.13-linux.tar.gz
+        url=http://saucelabs.com/downloads/sc-4.3.13-linux.tar.gz
         sha256sum=7ce794eb99787554cc6be6763110a6ed343b62133331b83d5f6ef3b3b4d690ba
         dest=/home/vagrant/sc-4.3.13-linux.tar.gz
 
