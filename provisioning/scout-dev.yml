@@ -43,14 +43,8 @@
     - include: spacescout-tasks/install_server.yml
       when: not skip_server
 
-    - include: spacescout-tasks/install_web.yml
-      when: not skip_web
-
     - include: spacescout-tasks/install_labstats.yml
       when: not skip_labstats
-
-    - include: spacescout-tasks/install_admin.yml
-      when: not skip_admin
 
     - include: tasks/create_proj.yml
 
