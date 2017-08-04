@@ -30,7 +30,7 @@ INTERNAL_IPS = (
     '0.0.0.0', #add your server's ip address!
 )
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost']
 
 
 # Application definition
@@ -203,7 +203,7 @@ COMPRESS_PRECOMPILERS = (
     ('text/x-sass', 'pyscss {infile} > {outfile}'),
     ('text/x-scss', 'pyscss {infile} > {outfile}'),
 )
-COMPRESS_ENABLED = True
+COMPRESS_ENABLED = False
 COMPRESS_OFFLINE = False
 COMPRESS_OUTPUT_DIR = ''
 COMPRESS_CSS_FILTERS = [
@@ -217,8 +217,10 @@ COMPRESS_JS_FILTERS = [
 # google analytics
 #GOOGLE_ANALYTICS_KEY = "UA-XXXXXXXX-X"
 
+GOOGLE_MAPS_API = "YOUR_API_KEY_HERE"
+
 # htmlmin
-HTML_MINIFY = True
+HTML_MINIFY = False
 
 # spotseeker-test api
 SPOTSEEKER_HOST = "http://localhost:8000"
