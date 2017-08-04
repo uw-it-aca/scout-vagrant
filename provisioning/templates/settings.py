@@ -203,7 +203,7 @@ COMPRESS_PRECOMPILERS = (
     ('text/x-sass', 'pyscss {infile} > {outfile}'),
     ('text/x-scss', 'pyscss {infile} > {outfile}'),
 )
-COMPRESS_ENABLED = False
+COMPRESS_ENABLED = True
 COMPRESS_OFFLINE = False
 COMPRESS_OUTPUT_DIR = ''
 COMPRESS_CSS_FILTERS = [
@@ -217,6 +217,7 @@ COMPRESS_JS_FILTERS = [
 # google analytics
 #GOOGLE_ANALYTICS_KEY = "UA-XXXXXXXX-X"
 
+# google maps api key - you'll need to fill this in
 GOOGLE_MAPS_API = "YOUR_API_KEY_HERE"
 
 # htmlmin
