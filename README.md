@@ -1,3 +1,5 @@
+This is no longer maintained!
+
 # scout-vagrant
 Vagrantfile and provisioning tasks for the scout project. Tested with ansible 1.9.4.
 
