@@ -1,6 +1,4 @@
-# :( hack to make deploy work with old restclients
-djangorestframework<3.0
 -e git+https://github.com/uw-it-aca/scout@qa#egg=scout
 -e git+https://github.com/uw-it-aca/scout-manager@qa#egg=scout-manager
--e git+https://github.com/uw-it-aca/spotseeker_client@master#egg=spotseeker_restclient
+-e git+https://github.com/uw-it-aca/uw-restclients-spotseeker.git#egg=uw_restclients_spotseeker
 -e git+https://github.com/charlon/django-hybridize@master#egg=hybridize
